@@ -1,26 +1,24 @@
 import React, {useState} from 'react';
-import './sidebar.scss'
+import './Sidebar.scss'
 import 'boxicons'
-import './control'
 
-const Sidebar = () => {
+export type modeType = {
+   changeMode: ()=>void
+}
 
+const Sidebar = ({changeMode}:modeType) => {
+   //open|close sidebar
    const [close, setClose] = useState<boolean>(false)
-   const [mode, setMode] = useState(true)
+
    const addCloseClass = () => {
       setClose(!close)
    }
-
-   const changeModeHandler = () => {
-      setMode(!mode)
-   }
-
    const openSidebarHandler = () =>{
       setClose(!close)
    }
 
    return (
-      <main className={mode ? `${'dark'}` : ''}>
+
          <nav className={close ? `${'sidebar'} ${'close'}` : 'sidebar'}>
             <div className="sidebar__header header">
                <div className="header__wrapper">
@@ -97,18 +95,17 @@ const Sidebar = () => {
                      </div>
                      <span className="mode__text-mode text"></span>
                      <div className="mode__toggle-switch">
-                        <span className="mode__switch" onClick={changeModeHandler}></span>
+                        <span className="mode__switch" onClick={changeMode}></span>
                      </div>
                   </li>
                </div>
             </div>
 
          </nav>
-         <section className="mainPage">
-            <div className="mainPage__text">Dashboard Sidebar</div>
-         </section>
-      </main>
+
+
    );
 };
 
 export default Sidebar;
+

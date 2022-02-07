@@ -38,11 +38,7 @@
       opacity: 0;
     }
 
-    & ~ .mainPage {
-      left: 78px;
-      height: 100vh;
-      width: calc(100% - 78px);
-    }
+
   }
 }
 
@@ -150,7 +146,6 @@
     background-color: transparent;
     display: flex;
     align-items: center;
-    height: 100%;
     width: 100%;
     border-radius: 6px;
     text-decoration: none;
@@ -276,53 +271,7 @@
   color: var(--text-color);
   transition: var(--tran-03);
 }
-//main page
-.mainPage {
-  position: absolute;
-  top: 0;
-  top: 0;
-  left: 250px;
-  height: 100vh;
-  width: calc(100% - 250px);
-  background-color: var(--body-color);
-  transition: var(--tran-05);
 
-  &__text {
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 12px 60px;
-  }
-}
 
-//Dark theme
-main.dark {
-  & .menu {
-    &__item:hover {
-      & .icon, .text {
-        color: var(--text-color);
-      }
-    }
-  }
-
-  & .mode {
-    &__switch::before {
-      left: 20px;
-    }
-
-    & .home .text {
-      color: var(--text-color);
-    }
-
-    & .moon {
-      opacity: 1;
-    }
-
-    & .sun {
-      opacity: 0;
-    }
-  }
-
-}
 
 
