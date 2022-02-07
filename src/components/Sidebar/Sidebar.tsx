@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import './Sidebar.scss'
 import 'boxicons'
+import {NavLink} from "react-router-dom";
 
 export type modeType = {
    changeMode: ()=>void
 }
 
 const Sidebar = ({changeMode}:modeType) => {
-   //open|close sidebar
+   //open|close Sidebar
    const [close, setClose] = useState<boolean>(false)
 
    const addCloseClass = () => {
@@ -42,40 +43,40 @@ const Sidebar = ({changeMode}:modeType) => {
 
                   <ul className="navbar__menu menu">
                      <li className="menu__item">
-                        <a href="#" className="menu__link">
+                        <NavLink to='/' className="menu__link">
                            <i className='bx bx-home-alt icon'></i>
                            <span className='menu__text text'>Homepage</span>
-                        </a>
+                        </NavLink>
                      </li>
                      <li className="menu__item">
-                        <a href="#" className="menu__link">
+                        <NavLink to='/dialogs' className="menu__link">
                            <i className='bx bx-message-alt icon'></i>
                            <span className='menu__text text'>Messages</span>
-                        </a>
+                        </NavLink>
                      </li>
                      <li className="menu__item">
-                        <a href="#" className="menu__link">
-                           <i className='bx bx-chat icon'></i>
-                           <span className='menu__text text'>Dialogs</span>
-                        </a>
+                        <NavLink to='/music' className="menu__link">
+                           <i className='bx bx-music icon'></i>
+                           <span className='menu__text text'>Music</span>
+                        </NavLink>
                      </li>
                      <li className="menu__item">
-                        <a href="#" className="menu__link">
-                           <i className='bx bx-pie-chart-alt icon'></i>
+                        <NavLink to='/video' className="menu__link">
+                           <i className='bx bx-video icon'></i>
+                           <span className='menu__text text'>Video</span>
+                        </NavLink>
+                     </li>
+                     <li className="menu__item">
+                        <NavLink to='/analytics' className="menu__link">
+                           <i className='bx bx-analyse icon'></i>
                            <span className='menu__text text'>Analytics</span>
-                        </a>
+                        </NavLink>
                      </li>
                      <li className="menu__item">
-                        <a href="#" className="menu__link">
-                           <i className='bx bx-heart icon'></i>
-                           <span className='menu__text text'>Like</span>
-                        </a>
-                     </li>
-                     <li className="menu__item">
-                        <a href="#" className="menu__link">
-                           <i className='bx bx-wallet icon'></i>
-                           <span className='menu__text text'>Wallets</span>
-                        </a>
+                        <NavLink to='/settings' className="menu__link">
+                           <i className='bx bx-server icon'></i>
+                           <span className='menu__text text'>Settings</span>
+                        </NavLink>
                      </li>
                   </ul>
                </div>

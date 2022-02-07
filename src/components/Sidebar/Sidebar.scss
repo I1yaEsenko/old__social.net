@@ -1,4 +1,4 @@
-//Left sidebar
+//Left Sidebar
 .sidebar {
   position: fixed;
   top: 0;
@@ -42,7 +42,7 @@
   }
 }
 
-//header left sidebar item (logo)
+//header left Sidebar item (logo)
 .header {
   position: relative;
   // .header__wrapper
@@ -119,7 +119,7 @@
   }
 }
 
-//left sidebar menu
+//left Sidebar menu
 .menu {
   // .menu__item
   &__item {
@@ -154,13 +154,6 @@
 
 }
 
-//bottom of left sidebar
-.bottom {
-
-  // .bottom__mode
-  &__mode {
-  }
-}
 //switch mode Light|Dark
 .mode {
   // .mode__light-dark
