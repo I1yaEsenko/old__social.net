@@ -5,8 +5,8 @@ import './Music.scss'
 
 const Music = () => {
    return (
-      <section className="home section">
-         <div className="home__text section__text">Music</div>
+      <section className="music section">
+         <div className="music__text section__text">Music</div>
       </section>
    );
 };

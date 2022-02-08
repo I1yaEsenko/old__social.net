@@ -1,8 +1,93 @@
-//==============Settings==============
-.home{
+/*=================Home=================*/
+.home {
+  &__wrapper {
+  }
+  &__title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+  }
+  &__profile {
+  }
 
+  &__posts {
+  }
 }
 
+/*=================Profile=================*/
+.profile {
+  &__title {
+  }
 
+  &__img {
+    width: 100%;
+    border-radius: 6px;
+    margin: 0 0 10px 0;
+  }
 
+  &__info {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+  }
+  &__img{
+    flex: 0 1 15%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__avatar-img {
+
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+/*=================Posts=================*/
+.posts {
+  display: flex;
+  flex-direction: column;
+  &__title{
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+  &__body {
+    display: flex;
+    margin: 0 0 10px 0;
+  }
+
+  &__textarea {
+    width: 250px;
+    height: 90px;
+    padding: 10px 5px;
+    resize: none;
+    outline: none;
+  }
+
+  &__add {
+  }
+
+  &__items {
+  }
+
+  &__item {
+  }
+}
+
+/*=================Item Post=================*/
+.item-post {
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    margin: 0 10px 10px 0;
+  }
+
+  &__message {
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+}
 

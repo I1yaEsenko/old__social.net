@@ -4,52 +4,44 @@
   &__menu {
     font-size: 24px;
   }
+
   // .header__sidebar
   &__sidebar {
     font-size: 36px;
   }
 }
+
 /*=================Section=================*/
-.section{
+.section {
   position: absolute;
   top: 0;
-  left: 230px;
+  left: 250px;
   height: 100vh;
   width: calc(100% - 250px);
   background-color: var(--body-color);
   transition: var(--tran-05);
+  padding: 8px 15px;
 
   &__text {
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 500;
     color: var(--text-color);
-    padding: 12px 60px;
+    padding: 2px 20px;
   }
 }
 
-//open&close
+/*=================Open/Close=================*/
 .sidebar.close {
-  & ~ .section {
-    left: 78px;
+  & ~.section {
+    left: 90px;
     height: 100vh;
-    width: calc(100% - 78px);
+    width: calc(100% - 90px);
   }
 }
 
-//Dark theme
-main.dark {
+/*=================Dark theme=================*/
 
-  & .mode {
 
-    & .mainPage .text {
-      color: var(--text-color);
-    }
-
-  }
-
-}
-
-//Dark theme
 main.dark {
   & .menu {
     &__item:hover {
@@ -64,7 +56,7 @@ main.dark {
       left: 20px;
     }
 
-    & .mainPage .text {
+    & .section .text {
       color: var(--text-color);
     }
 
@@ -77,4 +69,18 @@ main.dark {
     }
   }
 
+  & .content-text {
+    color: var(--text-color);
+  }
+
+  & .dialogs__item-link {
+    color: var(--text-color);
+  }
+}
+
+/*=================Elements=================*/
+.content-text {
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
 }

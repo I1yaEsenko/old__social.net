@@ -5,8 +5,8 @@ import './Video.scss'
 
 const Video = () => {
    return (
-      <section className="home section">
-         <div className="home__text section__text">Video</div>
+      <section className="video section">
+         <div className="video__text section__text">Video</div>
       </section>
    );
 };

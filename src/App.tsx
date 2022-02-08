@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './App.scss';
+import {Route, Routes} from 'react-router-dom';
 import Sidebar from "./components/Sidebar/Sidebar";
 import Home from "./components/Home/Home";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {Route, Routes} from 'react-router-dom';
 import Music from "./components/Music/Music";
 import Video from "./components/Video/Video";
 import Analytics from "./components/Analytics/Analytics";
@@ -17,21 +17,21 @@ function App() {
    }
 
    return (
-
-
       <main className={mode ? `${'dark'}` : ''}>
-         <Sidebar changeMode={changeModeHandler}/>
 
-         <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/dialogs' element={<Dialogs/>}/>
-            <Route path='/music' element={<Music/>}/>
-            <Route path='/video' element={<Video/>}/>
-            <Route path='/analytics' element={<Analytics/>}/>
-            <Route path='/settings' element={<Settings/>}/>
-         </Routes>
+         <div className='container'>
+            <Routes>
+               <Route path='/' element={ <Sidebar changeMode={changeModeHandler}/>}>
+                  <Route index element={<Home/>}/>
+                  <Route path='dialogs/*' element={<Dialogs/>}/>
+                  <Route path='music' element={<Music/>}/>
+                  <Route path='video' element={<Video/>}/>
+                  <Route path='analytics' element={<Analytics/>}/>
+                  <Route path='settings' element={<Settings/>}/>
+               </Route>
+            </Routes>
+         </div>
       </main>
-
    );
 }
 
