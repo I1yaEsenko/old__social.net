@@ -1,10 +1,11 @@
 import React from "react";
-import '../../App.scss'
+import '../../../App.scss'
 
-type MessagesType = {
+export type MessagesType = {
+   id:number
    message: string
 }
-export const Messages = ({message}: MessagesType) => {
+export const Messages = ({id,message}: MessagesType) => {
    return (
       <div className="dialogs__message content-text">{message}</div>
    )
