@@ -8,30 +8,46 @@ import Music from "./components/Music/Music";
 import Video from "./components/Video/Video";
 import Analytics from "./components/Analytics/Analytics";
 import Settings from "./components/Settings/Settings";
-import state from './state/state';
+import {GeneralType, StoreType} from "./Redux/state";
 
-function App() {
-   const [mode, setMode] = useState(false)
-   const changeModeHandler = () => {
-      setMode(!mode)
-   }
+type AppType = {
+  store: StoreType
+  dispatch: (action: GeneralType) => void
+}
 
-   return (
-      <main className={mode ? `${'dark'}` : ''}>
-         <div className='container'>
-            <Routes>
-               <Route path='/' element={<Sidebar changeMode={changeModeHandler}/>}>
-                  <Route index element={<Profile posts={state.profilePage.posts}/>}/>
-                  <Route path='dialogs/*' element={<Dialogs dialogs={state.dialogsPage.dialogs} messages={state.dialogsPage.messages}/>}/>
-                  <Route path='music' element={<Music/>}/>
-                  <Route path='video' element={<Video/>}/>
-                  <Route path='analytics' element={<Analytics/>}/>
-                  <Route path='settings' element={<Settings/>}/>
-               </Route>
-            </Routes>
-         </div>
-      </main>
-   );
+const App: React.FC<AppType> = ({...props}: AppType) => {
+  const state = props.store.getState()
+
+  const [mode, setMode] = useState(false)
+  const changeModeHandler = () => {
+    setMode(!mode)
+  }
+
+  return (
+    <main className={mode ? `${'dark'}` : ''}>
+      <div className='container'>
+        <Routes>
+          <Route path='/'
+                 element={<Sidebar changeMode={changeModeHandler}/>}>
+            <Route index element={<Profile posts={state.profilePage.posts}
+                                           message={state.profilePage.newPostText}
+                                           dispatch={props.dispatch.bind(props.store)}
+            />}/>
+            <Route path='dialogs/*'
+                   element={<Dialogs dialogs={state.dialogsPage.dialogs}
+                                     messages={state.dialogsPage.messages}
+                                     newDialogMessage={state.dialogsPage.newDialogMessage}
+                                     dispatch={props.dispatch.bind(props.store)}
+                   />}/>
+            <Route path='music' element={<Music/>}/>
+            <Route path='video' element={<Video/>}/>
+            <Route path='analytics' element={<Analytics/>}/>
+            <Route path='settings' element={<Settings/>}/>
+          </Route>
+        </Routes>
+      </div>
+    </main>
+  );
 }
 
 export default App;

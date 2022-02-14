@@ -6,7 +6,7 @@ import React from "react";
 export const ProfileInfo = () => {
    return (
       <>
-         <Image src={bg} alt={'bg_img'} className={'info__img'} width={1000} height={200}/>
+         <Image src={""} alt={'bg_img'} className={'info__img'} width={1000} height={200}/>
          <div className="info__body">
             <div className="info__avatar">
                <Image src={avatar} alt={avatar} className={'info__avatar-img'} width={150} height={150}

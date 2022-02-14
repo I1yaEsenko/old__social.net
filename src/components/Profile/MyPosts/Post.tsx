@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "../../System/Image/Image";
 import avatar from "../../../img/Avatar.jpg";
-import {PostsType} from "../../../state/state";
+import {PostsType} from "../../../Redux/state";
 
 
 export const Post = ({message, likesCount}: PostsType) => {

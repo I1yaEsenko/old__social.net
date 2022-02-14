@@ -3,23 +3,30 @@ import '../../App.scss'
 import './Profile.scss'
 import {MyPost} from "./MyPosts/MyPost";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import { ProfilePageType} from "../../state/state";
+import {GeneralType, PostsType} from "../../Redux/state";
 
-const Profile = ({posts}: ProfilePageType) => {
+export type ProfileType = {
+  posts: Array<PostsType>
+  message: string
+  dispatch: (action: GeneralType) => void
+}
 
-   return (
-      <section className="profile section">
-         <div className="profile__wrapper">
-            <div className="profile__title content-text">Homepage</div>
-            <div className="profile__profile info">
-               <ProfileInfo/>
-            </div>
-            <div className="profile__posts posts">
-               <MyPost posts={posts}/>
-            </div>
-         </div>
-      </section>
-   );
+const Profile = ({posts,  message, dispatch}: ProfileType) => {
+
+  return (
+    <section className="profile section">
+      <div className="profile__wrapper">
+        <div className="profile__title content-text">Homepage</div>
+        <div className="profile__profile info">
+          <ProfileInfo/>
+        </div>
+        <div className="profile__posts posts">
+          <MyPost posts={posts}
+                  message={message} dispatch={dispatch}/>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Profile;

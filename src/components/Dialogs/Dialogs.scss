@@ -48,6 +48,31 @@
   &__message {
     padding: 5px 8px;
   }
+  &__form{
+    margin: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  &__area{
+    margin: 0 0 10px 0;
+    resize: none;
+    width: 200px;
+    min-height: 60px;
+    padding: 5px 7px;
+    font-size: 12px;
+
+  }
+  &__btn{
+    padding: 5px 10px;
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    &:hover{
+      background-color: #ccc;
+    }
+  }
 }
 
 .active-link {
