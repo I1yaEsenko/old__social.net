@@ -1,4 +1,5 @@
-import exp from "constants";
+import {addPostAC, profileReducer, updatePostMessageAC} from "./profileReducer";
+import {addMessageDialogAC, dialogsReducer, updateMessageDialogAC} from "./dialogsReducer";
 
 export type DialogsType = {
   id: number
@@ -27,15 +28,14 @@ export type StateType = {
   dialogsPage: DialogsPageType
   profilePage: ProfilePageType
 }
+
 /*=================ACTIONS TYPE=================*/
-export type AddPostType = ReturnType<typeof addPostAC>
-export type UpdatePostType = ReturnType<typeof updatePostMessageAC>
-export type AddMessageType = ReturnType<typeof addMessageDialogAC>
-export type  UpdateNewMessageText = ReturnType<typeof updateMessageDialogAC>
+export type GeneralType = ReturnType<typeof addPostAC>
+  | ReturnType<typeof updatePostMessageAC>
+  | ReturnType<typeof addMessageDialogAC>
+  | ReturnType<typeof updateMessageDialogAC>
 
-export type GeneralType = AddPostType | UpdatePostType | AddMessageType | UpdateNewMessageText
-
-
+/*=================Store Type=================*/
 export type StoreType = {
   _state: StateType
   addPost: () => void
@@ -48,6 +48,7 @@ export type StoreType = {
   dispatch: (action: GeneralType) => void
 }
 
+/*=================Store=================*/
 let store: StoreType = {
   _state: {
     dialogsPage: {
@@ -116,62 +117,14 @@ let store: StoreType = {
     this._state.dialogsPage.newDialogMessage = newText
     this.rerenderEntireTree()
   },
-  dispatch(action) { // type : 'ADD-POST'
-    if (action.type === 'ADD-POST') {
-
-      const newPost: PostsType = {
-        id: 5,
-        message: action.newPostText,
-        likesCount: 0
-      }
-      this._state.profilePage.posts.push(newPost)
-      this._state.profilePage.newPostText = ''
-      this.rerenderEntireTree()
-
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-      this._state.profilePage.newPostText = action.newText
-      this.rerenderEntireTree()
-
-    } else if (action.type === 'ADD-MESSAGE-DIALOG') {
-      let newMessage: MessagesType = {
-        id: 1,
-        message: action.newMessage
-      }
-      this._state.dialogsPage.messages.push(newMessage)
-      this._state.dialogsPage.newDialogMessage = ''
-      this.rerenderEntireTree()
-
-    } else if (action.type === 'UPDATE-NEW-DIALOG-TEXT') {
-      this._state.dialogsPage.newDialogMessage = action.newMessageText
-      this.rerenderEntireTree()
-    }
-
+  dispatch(action) {
+/*=================Reducers=================*/
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this.rerenderEntireTree()
   },
 }
 
 
-export const addPostAC = (message: string) => {
-  return {
-    type: 'ADD-POST',
-    newPostText: message
-  } as const
-}
-export const updatePostMessageAC = (newText: string) => {
-  return {
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: newText
-  } as const
-}
-export const addMessageDialogAC = (message: string) => {
-  return {
-    type: 'ADD-MESSAGE-DIALOG',
-    newMessage: message
-  } as const
-}
-export const updateMessageDialogAC = (newText: string) => {
-  return {
-    type: 'UPDATE-NEW-DIALOG-TEXT',
-    newMessageText: newText
-  } as const
-}
+
 export default store
