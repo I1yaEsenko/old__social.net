@@ -3,30 +3,31 @@ import './Dialogs.scss'
 import '../../App.scss'
 import {DialogsItem} from "./DialogsItem/DialogsItem";
 import {Messages} from "./Messages/Messages";
-import state, {GeneralType, MessagesType} from "../../Redux/state";
-import {DialogsType} from "../../Redux/state";
+import {GeneralType, MessagesType} from "../../Redux/store";
+import {DialogsType} from "../../Redux/store";
 
 type DialogsPropsType = {
   dialogs: Array<DialogsType>
   messages: Array<MessagesType>
   newDialogMessage: string
-  dispatch: (action: GeneralType) => void
+  onChangeMessage: (text: string) => void
+  addMessage: () => void
 }
 
 
-const Dialogs = ({dialogs, messages,newDialogMessage,dispatch}: DialogsPropsType) => {
+const Dialogs = ({dialogs, messages, newDialogMessage, onChangeMessage, addMessage}: DialogsPropsType) => {
 
   /*=================Отрисовка элементов диалога и сообщений=================*/
   let dialogElement = dialogs.map(d => <DialogsItem id={d.id} name={d.name}/>)
   let messageElement = messages.map(m => <Messages id={m.id} message={m.message}/>)
 
   /*=================Добавление сообещния=================*/
-  let addMessage = () => {
-    dispatch({type: 'ADD-MESSAGE-DIALOG', newMessage: newDialogMessage})
+  let onAddMessage = () => {
+    addMessage()
   }
   /*=================Изменение данных в текстэрии=================*/
   const messageDialogChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch({type: 'UPDATE-NEW-DIALOG-TEXT', newMessageText: e.currentTarget.value})
+    onChangeMessage(e.currentTarget.value)
   }
 
   return (
@@ -40,8 +41,8 @@ const Dialogs = ({dialogs, messages,newDialogMessage,dispatch}: DialogsPropsType
           {messageElement}
           <div className='dialogs__form '>
             <textarea className='dialogs__area' onChange={messageDialogChangeHandler}
-                      value={newDialogMessage}></textarea>
-            <button className='dialogs__btn' onClick={addMessage}>Send</button>
+                      value={newDialogMessage}/>
+            <button className='dialogs__btn' onClick={onAddMessage}>Send</button>
           </div>
         </div>
       </div>

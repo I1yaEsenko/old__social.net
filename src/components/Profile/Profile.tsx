@@ -1,17 +1,15 @@
 import React from 'react';
 import '../../App.scss'
 import './Profile.scss'
-import {MyPost} from "./MyPosts/MyPost";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {GeneralType, PostsType} from "../../Redux/state";
+import {MyPostContainer} from "./MyPosts/MyPostContainer";
+import {StoreType} from "../../Redux/store";
 
-export type ProfileType = {
-  posts: Array<PostsType>
-  message: string
-  dispatch: (action: GeneralType) => void
+type ProfileType = {
+  store: StoreType
 }
 
-const Profile = ({posts,  message, dispatch}: ProfileType) => {
+const Profile = ({store}: ProfileType) => {
 
   return (
     <section className="profile section">
@@ -21,8 +19,7 @@ const Profile = ({posts,  message, dispatch}: ProfileType) => {
           <ProfileInfo/>
         </div>
         <div className="profile__posts posts">
-          <MyPost posts={posts}
-                  message={message} dispatch={dispatch}/>
+          <MyPostContainer store={store}/>
         </div>
       </div>
     </section>

@@ -1,13 +1,22 @@
-import {GeneralType, MessagesType, PostsType, ProfilePageType} from "./state";
+import {GeneralType, MessagesType, PostsType, ProfilePageType} from "./store";
 
-export const profileReducer = (state: ProfilePageType, action: GeneralType) => {
+
+let initialState: ProfilePageType = {
+  posts: [
+    {id: 1, message: 'Hello!!!!', likesCount: 12},
+    {id: 2, message: 'How are you???!!!!', likesCount: 5},
+  ],
+  newPostText: 'blablabla',
+}
+
+export const profileReducer = (state = initialState, action: GeneralType) => {
 
 
   switch (action.type) {
     case 'ADD-POST':
       const newPost: PostsType = {
         id: 5,
-        message: action.newPostText,
+        message: state.newPostText,
         likesCount: 0
       }
       state.posts.push(newPost)
@@ -21,10 +30,9 @@ export const profileReducer = (state: ProfilePageType, action: GeneralType) => {
 }
 
 /*=================Action Creators=================*/
-export const addPostAC = (message: string) => {
+export const addPostAC = () => {
   return {
     type: 'ADD-POST',
-    newPostText: message
   } as const
 }
 export const updatePostMessageAC = (newText: string) => {

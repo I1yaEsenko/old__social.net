@@ -1,21 +1,26 @@
 import React, {ChangeEvent} from "react";
 import {Post} from "./Post";
-import {ProfileType} from "../Profile";
-import {addPostAC, updatePostMessageAC} from "../../../Redux/state";
+import {PostsType} from "../../../Redux/store";
 
-export const MyPost = ({posts, message, dispatch}: ProfileType) => {
+type MyPostType = {
+  posts:Array<PostsType>
+  message:string
+  addPost:()=>void
+  updateNewPostText:(text:string)=>void
+}
 
+export const MyPost = ({posts, message, updateNewPostText, addPost}:MyPostType) => {
 
   /*=================Отрисовка всех постов=================*/
   let postsElement = posts.map(p => <Post id={p.id} message={p.message} likesCount={p.likesCount}/>)
 
   /*=================Добавление постов=================*/
-  const addPost = () => {
-    dispatch(addPostAC(message))
+  const onAddPost = () => {
+    addPost()
   }
   /*=================Изменение данных в текстэрии=================*/
   const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(updatePostMessageAC(e.currentTarget.value))
+    updateNewPostText(e.currentTarget.value)
   }
 
 
@@ -24,7 +29,7 @@ export const MyPost = ({posts, message, dispatch}: ProfileType) => {
       <h3 className="posts__title content-text">My posts</h3>
       <div className="posts__body">
         <textarea className="posts__textarea" onChange={onPostChange} value={message}/>
-        <button className="posts__add" onClick={addPost}>Add</button>
+        <button className="posts__add" onClick={onAddPost}>Add</button>
       </div>
       <div className="posts__items">
         {postsElement}
