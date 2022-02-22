@@ -1,7 +1,16 @@
-import {GeneralType, MessagesType, PostsType, ProfilePageType} from "./store";
+export type PostsType = {
+  id: number
+  message: string
+  likesCount: number
+}
+export type initialStateType = {
+  posts: Array<PostsType>
+  newPostText: string
+}
+type GeneralType = ReturnType<typeof addPostAC> | ReturnType<typeof updatePostMessageAC>
 
 
-let initialState: ProfilePageType = {
+let initialState: initialStateType = {
   posts: [
     {id: 1, message: 'Hello!!!!', likesCount: 12},
     {id: 2, message: 'How are you???!!!!', likesCount: 5},
@@ -9,23 +18,21 @@ let initialState: ProfilePageType = {
   newPostText: 'blablabla',
 }
 
-export const profileReducer = (state = initialState, action: GeneralType) => {
-
-
+export const profileReducer = (state = initialState, action: GeneralType): initialStateType => {
   switch (action.type) {
-    case 'ADD-POST':
+    case 'ADD-POST': {
       const newPost: PostsType = {
         id: 5,
         message: state.newPostText,
         likesCount: 0
       }
-      state.posts.push(newPost)
-      state.newPostText = ''
-      return state
-    case 'UPDATE-NEW-POST-TEXT':
-      state.newPostText = action.newText
-  }
+      return {...state, posts: [...state.posts, newPost], newPostText:''}
+    }
+    case 'UPDATE-NEW-POST-TEXT': {
+      return {...state, newPostText: action.newText}
+    }
 
+  }
   return state
 }
 

@@ -3,13 +3,8 @@ import '../../App.scss'
 import './Profile.scss'
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostContainer} from "./MyPosts/MyPostContainer";
-import {StoreType} from "../../Redux/store";
 
-type ProfileType = {
-  store: StoreType
-}
-
-const Profile = ({store}: ProfileType) => {
+const Profile = () => {
 
   return (
     <section className="profile section">
@@ -19,7 +14,7 @@ const Profile = ({store}: ProfileType) => {
           <ProfileInfo/>
         </div>
         <div className="profile__posts posts">
-          <MyPostContainer store={store}/>
+          <MyPostContainer/>
         </div>
       </div>
     </section>

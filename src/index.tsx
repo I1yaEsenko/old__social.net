@@ -9,22 +9,17 @@ import App from "./App";
 import {Provider} from "react-redux";
 
 
-let rerenderEntireTree = () => {
-  ReactDOM.render(
-    //@ts-ignore
-    <Provider store={store}>
-      <React.StrictMode>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </React.StrictMode>
-    </Provider>,
-    document.getElementById('root')
-  );
-}
-rerenderEntireTree()
-
-store.subscribe(rerenderEntireTree)
+ReactDOM.render(
+  //@ts-ignore
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>,
+  document.getElementById('root')
+);
 
 
 reportWebVitals();

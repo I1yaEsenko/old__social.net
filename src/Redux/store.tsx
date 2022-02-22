@@ -1,42 +1,37 @@
 import {addPostAC, profileReducer, updatePostMessageAC} from "./profileReducer";
 import {addMessageDialogAC, dialogsReducer, updateMessageDialogAC} from "./dialogsReducer";
 
-export type DialogsType = {
+type DialogsType = {
   id: number
   name: string
 }
-export type MessagesType = {
+type MessagesType = {
   id: number
   message: string
 }
-export type PostsType = {
+type PostsType = {
   id: number
   message: string
   likesCount: number
 }
-export type DialogsPageType = {
+type DialogsPageType = {
   dialogs: Array<DialogsType>
   messages: Array<MessagesType>
   newDialogMessage: string
 
 }
-export type ProfilePageType = {
+type ProfilePageType = {
   posts: Array<PostsType>
   newPostText: string
 }
-export type StateType = {
+type StateType = {
   dialogsPage: DialogsPageType
   profilePage: ProfilePageType
 }
 
-/*=================ACTIONS TYPE=================*/
-export type GeneralType = ReturnType<typeof addPostAC>
-  | ReturnType<typeof updatePostMessageAC>
-  | ReturnType<typeof addMessageDialogAC>
-  | ReturnType<typeof updateMessageDialogAC>
 
 /*=================Store Type=================*/
-export type StoreType = {
+type StoreType = {
   _state: StateType
   addPost: () => void
   rerenderEntireTree: () => void
@@ -45,7 +40,7 @@ export type StoreType = {
   updateNewMessageText: (newText: string) => void
   subscribe: (observer: () => void) => void
   getState: () => StateType
-  dispatch: (action: GeneralType) => void
+  dispatch: (action:any) => void
 }
 
 /*=================Store=================*/
@@ -118,7 +113,7 @@ let store: StoreType = {
     this.rerenderEntireTree()
   },
   dispatch(action) {
-/*=================Reducers=================*/
+    /*=================Reducers=================*/
     this._state.profilePage = profileReducer(this._state.profilePage, action)
     this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
     this.rerenderEntireTree()
@@ -126,5 +121,3 @@ let store: StoreType = {
 }
 
 
-
-export default store

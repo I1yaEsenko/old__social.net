@@ -8,8 +8,6 @@ import Music from "./components/Music/Music";
 import Video from "./components/Video/Video";
 import Analytics from "./components/Analytics/Analytics";
 import Settings from "./components/Settings/Settings";
-import {store} from "./Redux/redux-store";
-
 
 const App: React.FC = () => {
 
@@ -25,9 +23,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path='/'
                  element={<Sidebar changeMode={changeModeHandler}/>}>
-            <Route index element={<Profile store={store}/>}/>
-            <Route path='dialogs/*'
-                   element={<DialogsContainer store={store}/>}/>
+            <Route index element={<Profile/>}/>
+            <Route path='dialogs/*' element={<DialogsContainer/>}/>
             <Route path='music' element={<Music/>}/>
             <Route path='video' element={<Video/>}/>
             <Route path='analytics' element={<Analytics/>}/>

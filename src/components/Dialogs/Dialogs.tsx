@@ -3,16 +3,9 @@ import './Dialogs.scss'
 import '../../App.scss'
 import {DialogsItem} from "./DialogsItem/DialogsItem";
 import {Messages} from "./Messages/Messages";
-import {GeneralType, MessagesType} from "../../Redux/store";
-import {DialogsType} from "../../Redux/store";
+import {DialogsPropsType} from "./DialogsContainer";
 
-type DialogsPropsType = {
-  dialogs: Array<DialogsType>
-  messages: Array<MessagesType>
-  newDialogMessage: string
-  onChangeMessage: (text: string) => void
-  addMessage: () => void
-}
+
 
 
 const Dialogs = ({dialogs, messages, newDialogMessage, onChangeMessage, addMessage}: DialogsPropsType) => {

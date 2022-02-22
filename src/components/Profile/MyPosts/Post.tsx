@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "../../System/Image/Image";
 import avatar from "../../../img/Avatar.jpg";
-import {PostsType} from "../../../Redux/store";
+import {PostsType} from "../../../Redux/profileReducer";
 
 
 export const Post = ({message, likesCount}: PostsType) => {
