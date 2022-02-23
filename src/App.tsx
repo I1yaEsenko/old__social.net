@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 import Sidebar from "./components/Sidebar/Sidebar";
 import Profile from "./components/Profile/Profile";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 import Music from "./components/Music/Music";
 import Video from "./components/Video/Video";
 import Analytics from "./components/Analytics/Analytics";
@@ -25,6 +26,7 @@ const App: React.FC = () => {
                  element={<Sidebar changeMode={changeModeHandler}/>}>
             <Route index element={<Profile/>}/>
             <Route path='dialogs/*' element={<DialogsContainer/>}/>
+            <Route path='users/' element={<UsersContainer/>}/>
             <Route path='music' element={<Music/>}/>
             <Route path='video' element={<Video/>}/>
             <Route path='analytics' element={<Analytics/>}/>

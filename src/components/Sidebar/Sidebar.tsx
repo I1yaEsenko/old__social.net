@@ -55,6 +55,12 @@ const Sidebar = ({changeMode}:modeType) => {
                      </NavLink>
                   </li>
                   <li className="menu__item">
+                     <NavLink to='/users/' className="menu__link">
+                        <i className='bx bx-user icon'></i>
+                        <span className='menu__text text'>Users</span>
+                     </NavLink>
+                  </li>
+                  <li className="menu__item">
                      <NavLink to='/music' className="menu__link">
                         <i className='bx bx-music icon'></i>
                         <span className='menu__text text'>Music</span>
