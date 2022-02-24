@@ -20,7 +20,8 @@ const Dialogs = ({dialogs, messages, newDialogMessage, onChangeMessage, addMessa
   }
   /*=================Изменение данных в текстэрии=================*/
   const messageDialogChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    onChangeMessage(e.currentTarget.value)
+    let value = e.currentTarget.value;
+    onChangeMessage(value)
   }
 
   return (

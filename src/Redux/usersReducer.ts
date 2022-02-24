@@ -5,9 +5,9 @@ export type LocationType = {
 
 export type UserType = {
   id: number
-  imgUrl: string
+  photos: string
   followed: boolean
-  fullName: string
+  name: string
   status: string
   location: LocationType
 }
@@ -34,7 +34,7 @@ export const usersReducer = (state: InitialStateType = initialState, action: Gen
 
     case 'SET-USERS': {
 
-      return {...state, users: [...state.users, ...action.users]}
+      return {...state, users: [...action.users]}
     }
     default:
       return state
